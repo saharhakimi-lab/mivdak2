@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בוחן תקשורת נתונים מסכם - 40 שאלות | יא'7</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-main: #fbf9f5;
+  --card-bg: #ffffff;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+  --soft-blue: #eff6ff;
+  --border-color: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --mentor-bg: #fff7ed;
+  --mentor-border: #fdba74;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding-bottom: 90px;
+}
+
+/* ============ TOP NAV ============ */
+.top-nav {
+  max-width: 1200px;
+  margin: 20px auto 10px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subject-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(3, 105, 161, 0.1);
+}
+
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  background: var(--primary-blue);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.teacher-btn {
+  background: #ffffff;
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.teacher-btn:hover {
+  background: #f8fafc;
+  border-color: var(--primary-blue);
+}
+
+/* ============ HERO HEADER ============ */
+.hero-wrapper {
+  max-width: 1200px;
+  margin: 20px auto 30px;
+  padding: 0 20px;
+}
+
+.hero-content {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 30px 40px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero-text-right {
+  text-align: right;
+  flex: 1;
+}
+
+.hero-text-right h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.hero-text-right p {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.hero-logos-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #f8fafc;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  perspective: 600px;
+}
+
+.hero-logo-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 4px;
+  border: 3px solid white;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-logo-img:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+@keyframes spinClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinCounterClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes spin3D {
+  0% { transform: rotate(0deg) rotateY(0deg); }
+  50% { transform: rotate(180deg) rotateY(180deg); }
+  100% { transform: rotate(360deg) rotateY(360deg); }
+}
+
+.hero-logo-img:nth-child(1) { animation: spinClockwise 12s linear infinite; }
+.hero-logo-img:nth-child(2) { animation: spinCounterClockwise 12s linear infinite; }
+.hero-logo-img:nth-child(3) { animation: spin3D 12s linear infinite; }
+
+/* ============ MAIN CONTAINER ============ */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* MENTOR CARD */
+.mentor-card {
+  background: var(--mentor-bg);
+  border: 1px solid var(--mentor-border);
+  border-radius: var(--radius-lg);
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.mentor-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mentor-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #c2410c;
+}
+
+.mentor-desc {
+  font-size: 14px;
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.motivation-btn {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.motivation-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ============ CARDS & SECTIONS ============ */
+.card-panel {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 35px;
+  box-shadow: var(--shadow);
+}
+
+/* LOGIN SECTION */
+.login-box {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.login-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.login-sub {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: 'Assistant', sans-serif;
+}
+
+.text-input:focus {
+  border-color: var(--primary-blue);
+  background: var(--soft-blue);
+}
+
+.start-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* PROGRESS BAR */
+.progress-header {
+  position: sticky;
+  top: 15px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 12px 25px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.progress-title {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--primary-blue);
+}
+
+.bar-outer {
+  width: 180px;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #10b981);
+  transition: width 0.3s ease;
+}
+
+/* QUESTIONS LIST */
+.q-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.q-badge {
+  background: var(--primary-blue);
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.q-text-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.options-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.opt-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  font-size: 15px;
+}
+
+.opt-label:hover {
+  background: var(--soft-blue);
+  border-color: var(--primary-blue);
+}
+
+.opt-label input[type="radio"] {
+  accent-color: var(--primary-blue);
+  width: 18px;
+  height: 18px;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  border: none;
+  padding: 20px;
+  font-size: 1.3rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+  transition: transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* RESULT PANEL */
+.result-box {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.score-ring {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 8px solid var(--primary-blue);
+  background: var(--soft-blue);
+}
+
+.score-num {
+  font-family: 'Rubik', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.result-msg {
+  font-family: 'Rubik', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+/* TEACHER PANEL */
+.teacher-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  text-align: right;
+}
+
+.teacher-table th, .teacher-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.teacher-table th {
+  background: #f8fafc;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.hidden { display: none !important; }
+
+/* ============ FLOATING BOT CONTAINER ============ */
+.bot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bot-callout {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: bounce-callout 2.5s infinite ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid var(--primary-blue);
+  position: relative;
+}
+
+.bot-callout::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 8px 6px 0;
+  border-style: solid;
+  border-color: transparent var(--primary-blue) transparent transparent;
+}
+
+@keyframes bounce-callout {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+
+.bot-widget {
+  width: 312px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.bot-widget.collapsed {
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.bot-header {
+  background: #0f172a;
+  color: white;
+  padding: 13px 18px;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.bot-body {
+  padding: 18px;
+  text-align: center;
+}
+
+.bot-widget.collapsed .bot-header,
+.bot-widget.collapsed .bot-body > *:not(.avatar-container) {
+  display: none;
+}
+
+.bot-widget.collapsed .bot-body {
+  padding: 8px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+.bot-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-blue);
+  background: #ffffff;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+.bot-link {
+  display: block;
+  background: #10b981;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .hero-content { flex-direction: column; text-align: center; }
+  .hero-text-right { text-align: center; }
+  .options-grid-4 { grid-template-columns: 1fr; }
+  .bot-callout { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="subject-badge">
+    📚 יא'7 לומדים תקשוב עם המורה סהר
+  </div>
+  <div class="nav-left-group">
+    <div class="brand-badge">אקדמיית התקשוב</div>
+    <button onclick="toggleTeacherView()" class="teacher-btn">🔒 כניסת מורה</button>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero-wrapper">
+  <div class="hero-content">
+    <div class="hero-text-right">
+      <h1>יא'7 לומדים תקשוב עם המורה סהר 🚀</h1>
+      <p>בוחן תקשורת נתונים מסכם – 40 שאלות ברמת הסמכה 💥</p>
+    </div>
+    <div class="hero-logos-left">
+      <img src="https://lh3.googleusercontent.com/d/1oIkZlLHZWtFgoDblyxziTALQZwsyxAOo" class="hero-logo-img" alt="לוגו 1">
+      <img src="https://lh3.googleusercontent.com/d/1vgLFfYxDKLinPryu_9dK7g7HZV7QIrnL" class="hero-logo-img" alt="לוגו 2">
+      <img src="https://lh3.googleusercontent.com/d/1va1dQzAizB784PSXU3j8j2zbvB5XYozW" class="hero-logo-img" alt="לוגו 3">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- MENTOR BOX -->
+  <div class="mentor-card">
+    <div class="mentor-info">
+      <span style="font-size: 38px;">🧙‍♂️</span>
+      <div>
+        <div class="mentor-title">פינת המנטור המטורלל:</div>
+        <div class="mentor-desc" id="motivationQuote">לחצו על הכפתור משמאל לקבלת זריקת אנרגיה מטורללת לבחינה!</div>
+      </div>
+    </div>
+    <button class="motivation-btn" onclick="generateMotivation()">
+      תדלק אותי במוטיבציה! ⚡
+    </button>
+  </div>
+
+  <!-- LOGIN SECTION -->
+  <div id="loginSection" class="card-panel login-box">
+    <h2 class="login-title">ברוכים הבאים לבוחן מסכם - 40 שאלות</h2>
+    <p class="login-sub">אנא הכנס את שמך המלא כדי להתחיל בבוחן.</p>
+    <input type="text" id="studentName" placeholder="שם מלא..." class="text-input">
+    <button onclick="startQuiz()" class="start-btn">התחל מבחן כעת 🚀</button>
+  </div>
+
+  <!-- QUIZ SECTION -->
+  <div id="quizSection" class="hidden">
+    
+    <div class="progress-header" id="progressBox">
+      <div class="progress-title">התקדמות במבחן</div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span id="progressText" style="font-weight:800; font-size:14px; color:var(--text-muted);">0%</span>
+        <div class="bar-outer">
+          <div id="progressBar" class="bar-inner"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionsList"></div>
+
+    <button onclick="calculateScore()" class="submit-btn">
+      🚀 הגשת מבחן סופית
+    </button>
+  </div>
+
+  <!-- RESULT SECTION -->
+  <div id="resultSection" class="card-panel result-box hidden">
+    <div id="scoreRing" class="score-ring">
+      <span id="finalScore" class="score-num">0</span>
+      <span style="font-weight:800; font-size:12px; color:var(--text-muted);">ציון סופי</span>
+    </div>
+    <div id="resultMsg" class="result-msg"></div>
+    <button onclick="location.reload()" class="start-btn" style="max-width:250px; margin:0 auto;">
+      מבחן חדש 🔄
+    </button>
+  </div>
+
+  <!-- TEACHER SECTION -->
+  <div id="teacherSection" class="card-panel hidden">
+    <div style="display:flex; justify-between; align-items:center; margin-bottom:20px;">
+      <h2 style="font-family:'Rubik', sans-serif; font-size:22px; font-weight:900;">📋 יומן ציונים (מורה)</h2>
+      <button onclick="hideTeacherView()" class="teacher-btn">חזרה למבחן</button>
+    </div>
+    <table class="teacher-table">
+      <thead>
+        <tr>
+          <th>שם תלמיד</th>
+          <th style="text-align:center;">ציון</th>
+          <th>זמן הגשה</th>
+        </tr>
+      </thead>
+      <tbody id="teacherTableBody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FLOATING BOT WIDGET CONTAINER -->
+<div class="bot-container">
+  <div class="bot-widget collapsed" id="botWidget" onclick="expandBot(event)">
+    <div class="bot-header" onclick="toggleBot(event)">
+      <span>NODE: SAHAR-BOT</span>
+      <span>✕</span>
+    </div>
+    <div class="bot-body">
+      <div class="avatar-container">
+        <img src="https://lh3.googleusercontent.com/d/1BHxytxfATgrv3wpk_8slqpRX08p2Dzml" class="bot-avatar" alt="Sahar Bot">
+      </div>
+      <div style="font-weight:800; font-size:15px; color:#0f172a;">עוזר הבגרות יא'7 🤖</div>
+      <div style="font-size:12px; color:#64748b; margin-bottom:10px;">צריך עזרה בתקשורת או בפתרון שאלת בגרות?</div>
+      <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="bot-link">$ connect --dan-gpt</a>
+    </div>
+  </div>
+
+  <div class="bot-callout" onclick="expandBot(event)">
+    💬 דבר איתי אחי
+  </div>
+</div>
+
+<script>
+const questions = [
+    { id: 1, q: "מהו הערך הבינארי של המספר העשרוני 193?", options: ["11000001", "11000000", "10100001", "11100001"], a: "11000001" },
+    { id: 2, q: "כמה סיביות יש בכתובת IPv4?", options: ["32 סיביות", "64 סיביות", "128 סיביות", "48 סיביות"], a: "32 סיביות" },
+    { id: 3, q: "איזו שכבה במודל OSI אחראית על ניתוב (Routing)?", options: ["שכבת הרשת (3)", "שכבת התעבורה (4)", "שכבת היישום (7)", "שכבת ערוץ הנתונים (2)"], a: "שכבת הרשת (3)" },
+    { id: 4, q: "מהו תפקידו של פרוטוקול ה-DNS?", options: ["תרגום שמות מתחם לכתובות IP", "הקצאת כתובות IP באופן דינמי", "העברת קבצים", "אבטחת האתר"], a: "תרגום שמות מתחם לכתובות IP" },
+    { id: 5, q: "איזה פרוטוקול פועל בפורט 80?", options: ["HTTP", "HTTPS", "FTP", "DNS"], a: "HTTP" },
+    { id: 6, q: "מהו ה-Default Subnet Mask של Class C?", options: ["255.255.255.0", "255.255.0.0", "255.0.0.0", "255.255.255.255"], a: "255.255.255.0" },
+    { id: 7, q: "איזו כתובת IP היא כתובת Loopback?", options: ["127.0.0.1", "192.168.1.1", "10.0.0.1", "169.254.1.1"], a: "127.0.0.1" },
+    { id: 8, q: "כמה סיביות יש בכתובת MAC?", options: ["48", "32", "64", "128"], a: "48" },
+    { id: 9, q: "מהו תפקיד ה-Switch?", options: ["קישור מכשירים בתוך רשת מקומית (LAN)", "קישור בין רשתות שונות (WAN)", "סינון אתרים", "הגברת אות אלחוטי"], a: "קישור מכשירים בתוך רשת מקומית (LAN)" },
+    { id: 10, q: "איזה פרוטוקול משמש להקצאת כתובות IP אוטומטית?", options: ["DHCP", "DNS", "ARP", "ICMP"], a: "DHCP" },
+    { id: 11, q: "מהו פרוטוקול TCP?", options: ["פרוטוקול מכוון חיבור (Connection-Oriented)", "פרוטוקול ללא חיבור (Connectionless)", "פרוטוקול לשכבה הפיזית", "פרוטוקול ניתוב"], a: "פרוטוקול מכוון חיבור (Connection-Oriented)" },
+    { id: 12, q: "איזה כלי משמש לבדיקת קישוריות בסיסית?", options: ["Ping", "Ipconfig", "Tracert", "Nslookup"], a: "Ping" },
+    { id: 13, q: "מה המשמעות של כתובת IP שמתחילה ב-169.254?", options: ["המחשב לא קיבל כתובת מ-DHCP (APIPA)", "זו כתובת שרת גוגל", "זו כתובת Loopback", "זו כתובת רשת פנימית תקינה"], a: "המחשב לא קיבל כתובת מ-DHCP (APIPA)" },
+    { id: 14, q: "באיזו שכבה פועל ה-Hub?", options: ["השכבה הפיזית (1)", "שכבת הרשת (3)", "שכבת היישום", "שכבת ערוץ הנתונים"], a: "השכבה הפיזית (1)" },
+    { id: 15, q: "מהו ה-Port של פרוטוקול ה-SSH?", options: ["22", "23", "21", "80"], a: "22" },
+    { id: 16, q: "מהו ה-Port של פרוטוקול ה-Telnet?", options: ["23", "22", "25", "110"], a: "23" },
+    { id: 17, q: "איזה סוג כבל משמש לחיבור נתב למחשב (ללא MDIX)?", options: ["Crossover", "Straight-through", "Rollover", "Fiber"], a: "Crossover" },
+    { id: 18, q: "מה היתרון של סיב אופטי על כבל נחושת?", options: ["מרחק העברה גדול וחסינות להפרעות", "מחיר זול יותר", "קל יותר להתקנה", "גמישות גבוהה"], a: "מרחק העברה גדול וחסינות להפרעות" },
+    { id: 19, q: "מהו ה-AD (Administrative Distance) של ניתוב סטטי?", options: ["1", "90", "110", "120"], a: "1" },
+    { id: 20, q: "מהו ה-AD של פרוטוקול OSPF?", options: ["110", "120", "90", "20"], a: "110" },
+    { id: 21, q: "כמה כתובות Hosts ניתן להקצות ב-Subnet של /24?", options: ["254", "256", "510", "126"], a: "254" },
+    { id: 22, q: "מהו ה-VLAN ברירת המחדל במתגי סיסקו?", options: ["VLAN 1", "VLAN 0", "VLAN 10", "VLAN 100"], a: "VLAN 1" },
+    { id: 23, q: "איזה פרוטוקול מונע לופים (Loops) בשכבה 2?", options: ["STP", "VTP", "OSPF", "RIP"], a: "STP" },
+    { id: 24, q: "מהו פרוטוקול UDP?", options: ["מהיר יותר אך לא מבטיח הגעה", "איטי יותר אך אמין", "משמש רק למיילים", "פרוטוקול שכבה 3"], a: "מהיר יותר אך לא מבטיח הגעה" },
+    { id: 25, q: "מהו טווח הכתובות של Class A?", options: ["1-126", "128-191", "192-223", "224-239"], a: "1-126" },
+    { id: 26, q: "מהי פקודת ה-CLI לכניסה למצב הגדרות בסיסקו?", options: ["configure terminal", "enable", "show run", "interface config"], a: "configure terminal" },
+    { id: 27, q: "איזו פקודה מציגה את גרסת ה-IOS?", options: ["show version", "show ip interface", "show clock", "show flash"], a: "show version" },
+    { id: 28, q: "מהו ה-Metric של OSPF?", options: ["Cost (Bandwidth)", "Hop Count", "Delay", "Reliability"], a: "Cost (Bandwidth)" },
+    { id: 29, q: "איזה פרוטוקול אחראי על שליחת מיילים?", options: ["SMTP", "POP3", "IMAP", "SNMP"], a: "SMTP" },
+    { id: 30, q: "מהו פרוטוקול ICMP?", options: ["פרוטוקול להודעות בקרה (כמו Ping)", "פרוטוקול להעברת וידאו", "פרוטוקול הצפנה", "פרוטוקול ניתוב"], a: "פרוטוקול להודעות בקרה (כמו Ping)" },
+    { id: 31, q: "מה המשמעות של Full Duplex?", options: ["שידור וקליטה בו זמנית", "שידור או קליטה (לא יחד)", "שידור לצד אחד בלבד", "ניתוק הרשת"], a: "שידור וקליטה בו זמנית" },
+    { id: 32, q: "מהו ה-Port של HTTPS?", options: ["443", "80", "21", "53"], a: "443" },
+    { id: 33, q: "איזה סוג ניתוב מוגדר ידנית על ידי מנהל הרשת?", options: ["ניתוב סטטי", "ניתוב דינמי", "Default Gateway", "RIP"], a: "ניתוב סטטי" },
+    { id: 34, q: "מהי כתובת ה-Broadcast של הרשת 192.168.1.0/24?", options: ["192.168.1.255", "192.168.1.0", "255.255.255.255", "192.168.1.1"], a: "192.168.1.255" },
+    { id: 35, q: "כמה סיביות יש בכתובת IPv6?", options: ["128", "64", "32", "48"], a: "128" },
+    { id: 36, q: "מהו ה-Wildcard mask של /24?", options: ["0.0.0.255", "255.255.255.0", "0.0.255.255", "0.255.255.255"], a: "0.0.0.255" },
+    { id: 37, q: "איזו שכבה אחראית על דחיסה והצפנה?", options: ["שכבת התצוגה (6)", "שכבת היישום (7)", "שכבת השיחה (5)", "שכבת התעבורה (4)"], a: "שכבת התצוגה (6)" },
+    { id: 38, q: "מהו ה-Port של DHCP Server?", options: ["67", "68", "53", "25"], a: "67" },
+    { id: 39, q: "איזה רכיב מבצע NAT?", options: ["נתב (Router)", "מתג (Switch)", "מחשב קצה", "Hub"], a: "נתב (Router)" },
+    { id: 40, q: "מהי פקודת שמירת ההגדרות בנתב סיסקו?", options: ["copy running-config startup-config", "save all", "write memory", "שתי האפשרויות הנכונות"], a: "שתי האפשרויות הנכונות" }
+];
+
+let userAnswers = {};
+let teacherData = JSON.parse(localStorage.getItem('finalQuizResults')) || [];
+
+function startQuiz() {
+    const name = document.getElementById('studentName').value.trim();
+    if(!name) return alert("אנא הכנס שם מלא!");
+    document.getElementById('loginSection').classList.add('hidden');
+    document.getElementById('quizSection').classList.remove('hidden');
+    renderQuestions();
+}
+
+function renderQuestions() {
+    const list = document.getElementById('questionsList');
+    list.innerHTML = '';
+    questions.forEach((q, idx) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = "q-card";
+        qDiv.innerHTML = `
+            <div class="q-header">
+                <span class="q-badge">${idx+1}</span>
+                <h3 class="q-text-title">${q.q}</h3>
+            </div>
+            <div class="options-grid-4">
+                ${q.options.map(opt => `
+                    <label class="opt-label">
+                        <input type="radio" name="q${q.id}" value="${opt}" onchange="saveAnswer(${q.id}, '${opt}')">
+                        <span>${opt}</span>
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        list.appendChild(qDiv);
+    });
+}
+
+function saveAnswer(id, val) {
+    userAnswers[id] = val;
+    const pct = Math.round((Object.keys(userAnswers).length / questions.length) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').innerText = `${pct}%`;
+}
+
+function calculateScore() {
+    if(Object.keys(userAnswers).length < questions.length) {
+        if(!confirm("לא ענית על כל השאלות. להגיש בכל זאת?")) return;
+    }
+    let correct = 0;
+    questions.forEach(q => { if(userAnswers[q.id] === q.a) correct++; });
+    const score = Math.round((correct / questions.length) * 100);
+    
+    saveToTeacher(score);
+    showResults(score);
+}
+
+function showResults(score) {
+    document.getElementById('quizSection').classList.add('hidden');
+    document.getElementById('resultSection').classList.remove('hidden');
+    document.getElementById('finalScore').innerText = score;
+    
+    const ring = document.getElementById('scoreRing');
+    const msg = document.getElementById('resultMsg');
+    
+    if (score >= 60) {
+        ring.style.borderColor = '#10b981';
+        ring.style.background = '#f0fdf4';
+        document.getElementById('finalScore').style.color = '#10b981';
+        msg.innerText = "כל הכבוד! עברת את המבחן בהצלחה! 🎉";
+        msg.style.color = '#10b981';
+    } else {
+        ring.style.borderColor = '#ef4444';
+        ring.style.background = '#fef2f2';
+        document.getElementById('finalScore').style.color = '#ef4444';
+        msg.innerText = "לא נורא, כדאי לחזור על החומר ולנסות שוב! 💪";
+        msg.style.color = '#ef4444';
+    }
+}
+
+function saveToTeacher(score) {
+    const entry = {
+        name: document.getElementById('studentName').value,
+        score: score,
+        time: new Date().toLocaleTimeString('he-IL')
+    };
+    teacherData.push(entry);
+    localStorage.setItem('finalQuizResults', JSON.stringify(teacherData));
+}
+
+function toggleTeacherView() {
+    if(prompt("הכנס סיסמת מורה:") === "1234") {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('quizSection').classList.add('hidden');
+        document.getElementById('resultSection').classList.add('hidden');
+        document.getElementById('teacherSection').classList.remove('hidden');
+        updateTeacherTable();
+    } else {
+        alert("סיסמה שגויה!");
+    }
+}
+
+function hideTeacherView() {
+    document.getElementById('teacherSection').classList.add('hidden');
+    document.getElementById('loginSection').classList.remove('hidden');
+}
+
+function updateTeacherTable() {
+    const body = document.getElementById('teacherTableBody');
+    body.innerHTML = teacherData.slice().reverse().map(res => `
+        <tr>
+            <td style="font-weight:700; color:#0f172a;">${res.name}</td>
+            <td style="text-align:center; font-weight:900; color:${res.score >= 60 ? '#10b981' : '#ef4444'}">${res.score}</td>
+            <td style="color:#64748b; font-size:14px;">${res.time}</td>
+        </tr>
+    `).join('');
+}
+
+// --- מנטור ובוט ---
+const quotes = [
+  "יא'7 אלופים! כל שאלה שאתם פותרים מקרבת אתכם ל-100 עגול בבגרות! 🔥",
+  "תקשורת נתונים זה לא קסם - זה היגיון ופרוטוקולים. תמשיכו להפציץ! 💪",
+  "VLANs, ACLs, IP Subnetting - קטן על תלמידי סהר! 🚀",
+  "המורה סהר גאה בכם! תעברו על השאלות והבגרות שלכם בכיס! 🏆"
+];
+
+function generateMotivation() {
+  const rand = Math.floor(Math.random() * quotes.length);
+  document.getElementById('motivationQuote').innerText = quotes[rand];
+}
+
+function toggleBot(e) {
+  e.stopPropagation();
+  document.getElementById('botWidget').classList.toggle('collapsed');
+}
+
+function expandBot(e) {
+  const widget = document.getElementById('botWidget');
+  if (widget.classList.contains('collapsed')) {
+    widget.classList.remove('collapsed');
+  }
+}
+</script>
+
+</body>
+</html>
