@@ -46,6 +46,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .subject-badge {
@@ -65,7 +67,52 @@ body {
 .nav-left-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.excel-btn {
+  background: #10b981;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  transition: all 0.2s ease;
+}
+
+.excel-btn:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.list-btn {
+  background: #6366f1;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+  transition: all 0.2s ease;
+}
+
+.list-btn:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 
 .brand-badge {
@@ -95,6 +142,74 @@ body {
 .teacher-btn:hover {
   background: #f8fafc;
   border-color: var(--primary-blue);
+}
+
+/* ============ HELPER DROPDOWN ============ */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropbtn:hover {
+  transform: translateY(-2px);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  z-index: 100;
+  overflow: hidden;
+  text-align: right;
+}
+
+.dropdown.open .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: var(--text-dark);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--soft-blue);
+  color: var(--primary-blue);
 }
 
 /* ============ HERO HEADER ============ */
@@ -210,7 +325,6 @@ body {
   gap: 14px;
 }
 
-/* מנטור אוואטר מסתובב */
 .mentor-avatar-img {
   width: 60px;
   height: 60px;
@@ -638,19 +752,42 @@ body {
   .hero-text-right { text-align: center; }
   .options-grid-4 { grid-template-columns: 1fr; }
   .bot-callout { display: none; }
+  .top-nav { flex-direction: column; align-items: stretch; }
+  .nav-left-group { justify-content: center; }
+  .subject-badge { justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP NAV -->
+<!-- TOP NAV HEADER -->
 <div class="top-nav">
   <div class="subject-badge">
     יא'7 לומדים תקשוב עם המורה סהר
   </div>
   <div class="nav-left-group">
-    <div class="brand-badge">אקדמיית התקשוב</div>
+    <a href="https://docs.google.com/spreadsheets/d/1ST6yqMkaGEGbKd9-IFwuNWK5Fewitiih/edit?usp=drivesdk&ouid=113437576564980980412&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="excel-btn">
+      📊 ריכוז ביצוע
+    </a>
+    <a href="https://docs.google.com/document/d/1TNAnlonm6WxNSVHAA96XAHQkzIqjSEbTV9d93PFJvbs/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="list-btn">
+      📋 רשימה
+    </a>
+
+    <!-- תפריט דפי עזר נפתח (בלשונית חדשה לעקיפת חסימות Sites) -->
+    <div class="dropdown" id="helpDropdown">
+      <button type="button" class="dropbtn" onclick="toggleDropdown(event)">📄 דפי עזר ▼</button>
+      <div class="dropdown-content">
+        <a href="https://drive.google.com/file/d/1ZcMIy8SjhM5IJo0bRwc49oRre2TIzQQi/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">📄 דפי עזר כלליים</a>
+        <a href="https://drive.google.com/file/d/1FsoHiyyFYIElgTkhWrbIuExRMT-EQ5da/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">🔢 דפי המרות</a>
+        <a href="https://drive.google.com/file/d/1lNQFKlzG3_nNPnp5KbwJ_Qnd12SQOqvz/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">🌐 כתובות IP</a>
+      </div>
+    </div>
+
     <button onclick="toggleTeacherView()" class="teacher-btn">🔒 כניסת מורה</button>
+    
+    <div class="brand-badge">
+      אקדמיית התקשוב
+    </div>
   </div>
 </div>
 
@@ -658,8 +795,8 @@ body {
 <div class="hero-wrapper">
   <div class="hero-content">
     <div class="hero-text-right">
-      <h1>יא'7 לומדים תקשוב עם המורה סהר </h1>
-      <p>בוחן תקשורת נתונים מסכם – 40 שאלות ברמת הסמכה </p>
+      <h1>יא'7 לומדים תקשוב עם המורה סהר 🚀</h1>
+      <p>בוחן תקשורת נתונים מסכם – 40 שאלות ברמת הסמכה 💥</p>
     </div>
     <div class="hero-logos-left">
       <img src="https://lh3.googleusercontent.com/d/1oIkZlLHZWtFgoDblyxziTALQZwsyxAOo" class="hero-logo-img" alt="לוגו 1">
@@ -727,7 +864,7 @@ body {
 
   <!-- TEACHER SECTION -->
   <div id="teacherSection" class="card-panel hidden">
-    <div style="display:flex; justify-between; align-items:center; margin-bottom:20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
       <h2 style="font-family:'Rubik', sans-serif; font-size:22px; font-weight:900;">📋 יומן ציונים (מורה)</h2>
       <button onclick="hideTeacherView()" class="teacher-btn">חזרה למבחן</button>
     </div>
@@ -768,6 +905,17 @@ body {
 </div>
 
 <script>
+/* ============ DROPDOWN FUNCTIONS ============ */
+function toggleDropdown(e) {
+  e.stopPropagation();
+  document.getElementById('helpDropdown').classList.toggle('open');
+}
+
+document.addEventListener('click', function() {
+  const dropdown = document.getElementById('helpDropdown');
+  if (dropdown) dropdown.classList.remove('open');
+});
+
 const questions = [
     { id: 1, q: "מהו הערך הבינארי של המספר העשרוני 193?", options: ["11000001", "11000000", "10100001", "11100001"], a: "11000001" },
     { id: 2, q: "כמה סיביות יש בכתובת IPv4?", options: ["32 סיביות", "64 סיביות", "128 סיביות", "48 סיביות"], a: "32 סיביות" },
@@ -926,7 +1074,6 @@ function updateTeacherTable() {
     `).join('');
 }
 
-// --- מנטור ובוט ---
 const quotes = [
   "יא'7 אלופים! כל שאלה שאתם פותרים מקרבת אתכם ל-100 עגול בבגרות! 🔥",
   "תקשורת נתונים זה לא קסם - זה היגיון ופרוטוקולים. תמשיכו להפציץ! 💪",
